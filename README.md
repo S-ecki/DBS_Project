@@ -1,3 +1,5 @@
+This project is not finished yet.
+
 # Fitness Database - SQL_Project
  
 In this project, I built a database of a chosen domain from scratch. <br/>
@@ -18,7 +20,6 @@ In addition, `Anforderungsanalyse.pdf` is a wordy explanation of the Entities, R
 
 ## Relational Schema
 
-fk
 
 ## SQL Script on Oracle
 
