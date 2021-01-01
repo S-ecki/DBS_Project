@@ -7,9 +7,18 @@ _The Project was split up into several parts:_
 
 ## Entity Relationship Diagram
 
+ER-Diagrams help to visualize your ideas and lead you to possible flaws. </br>
+I used [Chen-Notation](https://de.wikipedia.org/wiki/Chen-Notation) and [BeeUp](https://austria.omilab.org/psm/content/bee-up/info) to construct the diagram <sup>(but wouldn´t recommend it to anybody in hindsight)</sup>
+
+I frequently came back to the diagram when I was stuck somewhere during the project. Genereally, I had it open most of the time (perhaps because I´m a visual type). </br>
+Certainly, it was worth the time it took to create the ER-Diagram!
+
+In addition, `Anforderungsanalyse.pdf` is a wordy explanation of the Entities, Relationships and Attributes of my database.
+
 
 ## Relational Schema
 
+fk
 
 ## SQL Script on Oracle
 
