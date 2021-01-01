@@ -1,3 +1,5 @@
+This project is under working at the moment.
+
 # Fitness Database - SQL_Project
  
 In this project, I built a database of a chosen domain from scratch. <br/>
@@ -18,7 +20,6 @@ In addition, `Anforderungsanalyse.pdf` is a wordy explanation of the Entities, R
 
 ## Relational Schema
 
-fk
 
 ## SQL Script on Oracle
 
@@ -46,9 +47,7 @@ _Note: The amount of tupels inserted is static in this program. However, it woul
 
 
 ## What I´ve learnt
-* 
 * Database connection using Core Java
 * Working with _java.sql_
 * Using _.csv_ files in Java 
 * Error Handling on databases
-* 
