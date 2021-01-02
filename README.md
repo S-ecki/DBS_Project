@@ -45,7 +45,7 @@ _Note: for ease of use, all parameters are read and stay as Strings until they a
 `Launcher` contains <sup>(you guessed it)</sup> the _main_ method. It fills all the tables with the data provided and additionally keeps track of all the foreign keys needed to dynamically create relationships between the entities.</br>
 _Note: Further comments to understand the code are provided inside the file._
 
-_Note: The amount of tupels inserted is static in this program. However, it would be an easy extension to have a command line interface to pass parameters for the inserted amount on each table. Further randomization of the Primary Key attributes would be required, but that shouldn´t be problem. My time is just very limited right now :(_
+_Note: The amount of tupels inserted is static in this program. However, it would be an easy extension to have a command line interface to pass parameters for the inserted amount on each table. Further randomization of the Primary Key attributes would be required, but that shouldn´t be a problem. My time is just very limited right now :(_
 
 
 ## PHP + Bootstrap
