@@ -1,4 +1,4 @@
-This project is under working at the moment.
+This project is under work at the moment.
 
 # Fitness Database - SQL_Project
  
@@ -19,6 +19,10 @@ In addition, `Anforderungsanalyse.pdf` is a wordy explanation of the Entities, R
 
 
 ## Relational Schema
+
+Further manifesting the ideas is the Relational Schema. </br>
+It represents the tables, which will be later created using SQL. </br>
+Specifically, it defines Primary Keys, Foreign Keys and sometimes key candidates for all the relations. </br>
 
 
 ## SQL Script on Oracle
@@ -43,10 +47,13 @@ _Note: Further comments to understand the code are provided inside the file._
 
 _Note: The amount of tupels inserted is static in this program. However, it would be an easy extension to have a command line interface to pass parameters for the inserted amount on each table. Further randomization of the Primary Key attributes would be required, but that shouldn´t be problem. My time is just very limited right now :(_
 
+
 ## PHP + Bootstrap
 
 
 ## What I´ve learnt
+* The value of ER-Diagrams
+* How to translate ER to Relational Schema and DDL
 * Database connection using Core Java
 * Working with _java.sql_
 * Using _.csv_ files in Java 
