@@ -65,7 +65,7 @@ CREATE TABLE uebung(
 
 CREATE TABLE muskel(
     m_id        INTEGER,    --created with trigger
-    bezeichnung VARCHAR(100) UNIQUE,
+    bezeichnung VARCHAR(100) UNIQUE NOT NULL,
     mv          INTEGER,
     CONSTRAINT muskel_pk PRIMARY KEY (m_id)  
 );
