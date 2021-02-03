@@ -120,6 +120,29 @@ BEGIN
 END;
 /
 
+
+--procedure
+CREATE OR REPLACE PROCEDURE delete_muskel(p_m_id  IN  INTEGER, p_error_code OUT NUMBER)
+AS
+  BEGIN
+    DELETE  
+    FROM muskel
+    WHERE p_m_id = muskel.m_id;
+
+    p_error_code := SQL%ROWCOUNT;
+    IF (p_error_code = 1)
+    THEN
+      COMMIT;
+    ELSE
+      ROLLBACK;
+    END IF;
+    EXCEPTION
+    WHEN OTHERS
+    THEN
+       p_error_code := SQLCODE;
+  END delete_muskel;
+/ 
+
 --zeigt anzahl der geraete in studios innerhalb österreichs an
 CREATE VIEW geraeteanzahl_oe AS 
 SELECT st_name, COUNT(g.seriennr) as Anzahl_Geraete
