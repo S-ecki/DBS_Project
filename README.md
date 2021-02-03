@@ -54,7 +54,13 @@ _Note: The amount of tupels inserted is static in this program. However, it woul
 ## What I´ve learnt
 * The value of ER-Diagrams
 * How to translate ER to Relational Schema and DDL
+* SQL Syntax & Semantic
 * Database connection using Core Java
 * Working with _java.sql_
-* Using _.csv_ files in Java 
+* (Using _.csv_ files in Java)
 * Error Handling on databases
+* .html
+* .php - databases
+* .connecting website to database
+* Working with Docker and its quirks
+* .bootstrap
