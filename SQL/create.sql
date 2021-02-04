@@ -143,6 +143,7 @@ AS
   END delete_muskel;
 / 
 
+
 --zeigt anzahl der geraete in studios innerhalb österreichs an
 CREATE VIEW geraeteanzahl_oe AS 
 SELECT st_name, COUNT(g.seriennr) as Anzahl_Geraete
@@ -150,7 +151,6 @@ FROM geraet g INNER JOIN studio s ON g.plz=s.plz AND g.strasse=s.strasse AND g.l
 GROUP BY st_name, s.land
 HAVING s.land = 'Österreich'
 ORDER BY COUNT(g.seriennr);
-
 
 --View zählt anzahl der trainer und trainees,
 --und wie viele unterschiedliche sportler es gibt (manche trainer können auch trainees sein)
