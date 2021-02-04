@@ -2,6 +2,7 @@
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
+// fetch all uebungen
 $uebung_array = $database->selectAllUebung();
 ?>
 
@@ -27,7 +28,7 @@ $uebung_array = $database->selectAllUebung();
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -89,50 +90,47 @@ $("#wrapper").toggleClass("toggled");
 });
 </script>
 
-
-
-
 <body>
 <main>
 <br>
+<div class="container-fluid">
+  <button onclick="goBack()" class="btn btn-outline-secondary btn-lg">
+      Back
+  </button>
+  <script>
+      function goBack(){
+          window.history.back();
+      }
+  </script>
 
-<button onclick="goBack()" class="btn btn-outline-secondary btn-lg">
-    Back
-</button>
-<script>
-    function goBack(){
-        window.history.back();
-    }
-</script>
+  <br>  
+  <br>
 
-<br>  
-<br>
+  <!-- Display all Uebungen-->
+  <h1>Show Übung</h1>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>Übung Name</th>
+          <th>Schwierigkeit</th>
+          <th>Wiederholungszahl</th>     
+          <th>Herstellerfirma Gerät</th>  
+          <th>Seriennummer Gerät</th>    
+      </tr>
+      </thead>
 
-<!-- Display all Uebungen-->
-<h1>Show Übung</h1>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>Übung Name</th>
-        <th>Schwierigkeit</th>
-        <th>Wiederholungszahl</th>     
-        <th>Herstellerfirma Gerät</th>  
-        <th>Seriennummer Gerät</th>    
-    </tr>
-    </thead>
+      <?php foreach ($uebung_array as $uebung) : ?>
+          <tr>
+              <td><?php echo $uebung['UE_NAME']; ?>  </td>
+              <td><?php echo $uebung['SCHWIERIGKEIT']; ?>  </td>
+              <td><?php echo $uebung['WIEDERHOLUNGEN']; ?>  </td>   
+              <td><?php echo $uebung['FIRMA']; ?>  </td>     
+              <td><?php echo $uebung['SERIENNR']; ?>  </td>  
+          </tr>
+      <?php endforeach; ?>
+  </table>
+</div>
 
-    <?php foreach ($uebung_array as $uebung) : ?>
-        <tr>
-            <td><?php echo $uebung['UE_NAME']; ?>  </td>
-            <td><?php echo $uebung['SCHWIERIGKEIT']; ?>  </td>
-            <td><?php echo $uebung['WIEDERHOLUNGEN']; ?>  </td>   
-            <td><?php echo $uebung['FIRMA']; ?>  </td>     
-            <td><?php echo $uebung['SERIENNR']; ?>  </td>  
-        </tr>
-    <?php endforeach; ?>
-</table>
-
-
-   </main>
+</main>
 </body>
 </html>

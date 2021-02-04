@@ -3,6 +3,7 @@
     <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
 
+<div class="container-fluid">
 <a href="muskelIndex.php">
     go back
 </a>
@@ -42,14 +43,14 @@ else if($action == "delete") { $error_code = $database->deleteMuskel($mid); }
 
 
 // Check result
-if($action == "delete"){
+if($action == "delete"){    // check for error code of stored procedure
     if ($error_code){
         echo "Muskel with ID {$mid} successfully deleted!";
     }
     else{
         echo "Error can't delete Muskel with ID: {$mid}. Errorcode: {$error_code}";
     }
-}else{
+}else{                      // check like usual without procedure
     if ($success){
         echo "Operation successfull!";
     }
@@ -57,9 +58,5 @@ if($action == "delete"){
         echo "Error!";
     }
 }
-
-
-
-
-
 ?>
+</div>

@@ -2,6 +2,7 @@
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
+// fetch all trainees
 $trainee_array = $database->selectAllTrainee();
 ?>
 
@@ -26,7 +27,7 @@ $trainee_array = $database->selectAllTrainee();
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -88,12 +89,10 @@ $("#wrapper").toggleClass("toggled");
 });
 </script>
 
-
-
 <body>
 <main>
 <br>
-
+<div class="container-fluid">
 <button onclick="goBack()" class="btn btn-outline-secondary btn-lg">
     Back
 </button>
@@ -114,7 +113,7 @@ $("#wrapper").toggleClass("toggled");
         <th>SVNr</th>
         <th>Name</th>
         <th>Geschlecht</th>     
-        <th>Groesse</th>  
+        <th>Größe</th>  
         <th>Gewicht</th>    
         <th>Zielgewicht</th>    
         <th>Erfahrung</th>  
@@ -133,8 +132,7 @@ $("#wrapper").toggleClass("toggled");
         </tr>
     <?php endforeach; ?>
 </table>
-
-
-   </main>
+</div>
+</main>
 </body>
 </html>

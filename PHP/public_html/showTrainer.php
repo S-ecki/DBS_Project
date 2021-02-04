@@ -1,8 +1,8 @@
 <?php
-
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
+// fetch all trainers
 $trainer_array = $database->selectAllTrainer();
 ?>
 
@@ -27,7 +27,7 @@ $trainer_array = $database->selectAllTrainer();
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -89,54 +89,52 @@ $("#wrapper").toggleClass("toggled");
 });
 </script>
 
-
 <body>
 <main>
 <br>
+  <div class="container-fluid">
+  <button onclick="goBack()" class="btn btn-outline-secondary btn-lg">
+      Back
+  </button>
+  <script>
+      function goBack(){
+          window.history.back();
+      }
+  </script>
 
-<button onclick="goBack()" class="btn btn-outline-secondary btn-lg">
-    Back
-</button>
-<script>
-    function goBack(){
-        window.history.back();
-    }
-</script>
+  <br>  
+  <br>
 
-<br>  
-<br>
+  <!-- Display all Trainers-->
+  <h1>Show Trainer</h1>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>SVNr</th>
+          <th>Name</th>
+          <th>Geschlecht</th>     
+          <th>Größe</th>  
+          <th>Gewicht</th>    
+          <th>Trainer ID</th>    
+          <th>Kosten</th>  
+          <th>Schwerpunkt</th>  
+      </tr>
+      </thead>
 
-<!-- Display all Trainers-->
-<h1>Show Trainer</h1>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>SVNr</th>
-        <th>Name</th>
-        <th>Geschlecht</th>     
-        <th>Groesse</th>  
-        <th>Gewicht</th>    
-        <th>Trainer ID</th>    
-        <th>Kosten</th>  
-        <th>Schwerpunkt</th>  
-    </tr>
-    </thead>
-
-    <?php foreach ($trainer_array as $trainer) : ?>
-        <tr>
-            <td><?php echo $trainer['SVNR']; ?>  </td>
-            <td><?php echo $trainer['SP_NAME']; ?>  </td>
-            <td><?php echo $trainer['GESCHLECHT']; ?>  </td>   
-            <td><?php echo $trainer['GROESSE']; ?>  </td>     
-            <td><?php echo $trainer['GEWICHT']; ?>  </td>  
-            <td><?php echo $trainer['T_ID']; ?>  </td>  
-            <td><?php echo $trainer['T_KOSTEN']; ?>  </td>  
-            <td><?php echo $trainer['SCHWERPUNKT']; ?>  </td> 
-        </tr>
-    <?php endforeach; ?>
-</table>
-
-
-   </main>
+      <?php foreach ($trainer_array as $trainer) : ?>
+          <tr>
+              <td><?php echo $trainer['SVNR']; ?>  </td>
+              <td><?php echo $trainer['SP_NAME']; ?>  </td>
+              <td><?php echo $trainer['GESCHLECHT']; ?>  </td>   
+              <td><?php echo $trainer['GROESSE']; ?>  </td>     
+              <td><?php echo $trainer['GEWICHT']; ?>  </td>  
+              <td><?php echo $trainer['T_ID']; ?>  </td>  
+              <td><?php echo $trainer['T_KOSTEN']; ?>  </td>  
+              <td><?php echo $trainer['SCHWERPUNKT']; ?>  </td> 
+          </tr>
+      <?php endforeach; ?>
+  </table>
+</div>
+</main>
 </body>
 </html>

@@ -2,7 +2,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
-
+<div class="container-fluid">
 <a href="konditioniertIndex.php">
     go back
 </a>
@@ -53,3 +53,4 @@ else{
     echo "Error!";
 }
 ?>
+</div>

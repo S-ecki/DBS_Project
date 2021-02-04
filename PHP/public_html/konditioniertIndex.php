@@ -1,5 +1,4 @@
 <?php
-
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
@@ -10,7 +9,6 @@ if (isset($_GET['name'])) {
 
 if($name == '') { $kond_array = $database->selectAllKond(); }   // empty search -> show all
 else { $kond_array = $database->selectKondName($name); }        // not empty -> search for land
-
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +32,7 @@ else { $kond_array = $database->selectKondName($name); }        // not empty -> 
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -97,100 +95,100 @@ $("#wrapper").toggleClass("toggled");
 </script>
 
 
+  <div class="container-fluid">
+  <!-- Add + Update + Delete - choice through radio -->
+  <br>
+  <h1>Konditioniert </h1>
+  <br>
 
-<!-- Add + Update + Delete - choice through radio -->
-<br>
-<h1>Konditioniert </h1>
-<br>
+  <form method="get" action="konditioniertAddUpdateDelete.php"> 
 
-<form method="get" action="konditioniertAddUpdateDelete.php"> 
+      <!-- Choice -->
+      <div class="form-group">
+        <label for="Aktion"><h3>Create or Delete Konditioniert</h3></label>
+        <select class="form-control" id="Aktion" name="Aktion">
+          <option value="add">Create</option>
+          <option value="delete">Delete</option>
+        </select>
+      </div>
 
-    <!-- Choice -->
-    <div class="form-group">
-      <label for="Aktion"><h3>Create or Delete Konditioniert</h3></label>
-      <select class="form-control" id="Aktion" name="Aktion">
-        <option value="add">Create</option>
-        <option value="delete">Delete</option>
-      </select>
-    </div>
+      <!-- Textfelder -->
+      <div class="row">
+          <div class="col">
+              <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Muskel ID" name="mid">
+              </div>
 
-    <!-- Textfelder -->
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Muskel ID" name="mid">
-            </div>
+              <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Gerät Seriennummer" name="seriennr">
+              </div>
 
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Gerät Seriennummer" name="seriennr">
-            </div>
+          </div>
 
-        </div>
+          <div class="col">
+          <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Gerät Firma" name="firma">
+              </div>
 
-        <div class="col">
-        <div class="form-group">
-                <input type="text" class="form-control" placeholder="Gerät Firma" name="firma">
-            </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Übung Name" name="name">
+              </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Übung Name" name="name">
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- Submit button -->
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
-    </div>
-</form>
-<br>
+          </div>
+      </div>
 
 
-<br>
-<!-- Search Kond -->
-<h3 title="search for Konditioniert Relations of specific übung">Search Konditioniert</h3>
-<form method="GET">
-
-    <div>
-        <input type="text" class="form-control" placeholder="Übung Name" name="name" value='<? echo $name; ?>'>
-    </div>
-    <br>
-
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Search
-        </button>
-    </div>
-</form>
+      <!-- Submit button -->
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Submit
+          </button>
+      </div>
+  </form>
+  <br>
 
 
-<!-- Search Result -->
-<br>
-<h3>Search Results</h3>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>Muskel ID</th>
-        <th>Firma</th>
-        <th>Seriennummer</th>     
-        <th>Übung Name</th>  
-    </tr>
-    </thead>
+  <br>
+  <!-- Search Kond -->
+  <h3 title="search for Konditioniert Relations of specific übung">Search Konditioniert</h3>
+  <form method="GET">
 
-    <?php foreach ($kond_array as $kond) : ?>
-        <tr>
-            <td><?php echo $kond['M_ID']; ?>  </td>
-            <td><?php echo $kond['FIRMA']; ?>  </td>
-            <td><?php echo $kond['SERIENNR']; ?>  </td>   
-            <td><?php echo $kond['UE_NAME']; ?>  </td>     
-        </tr>
-    <?php endforeach; ?>
-</table>
+      <div>
+          <input type="text" class="form-control" placeholder="Übung Name" name="name" value='<? echo $name; ?>'>
+      </div>
+      <br>
 
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Search
+          </button>
+      </div>
+  </form>
+
+
+  <!-- Search Result -->
+  <br>
+  <h3>Search Results</h3>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>Muskel ID</th>
+          <th>Firma</th>
+          <th>Seriennummer</th>     
+          <th>Übung Name</th>  
+      </tr>
+      </thead>
+
+      <?php foreach ($kond_array as $kond) : ?>
+          <tr>
+              <td><?php echo $kond['M_ID']; ?>  </td>
+              <td><?php echo $kond['FIRMA']; ?>  </td>
+              <td><?php echo $kond['SERIENNR']; ?>  </td>   
+              <td><?php echo $kond['UE_NAME']; ?>  </td>     
+          </tr>
+      <?php endforeach; ?>
+  </table>
+</div>
 
    </main>
 </body>

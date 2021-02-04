@@ -3,6 +3,7 @@
     <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
 
+<div class="container-fluid">
 <a href="geraetIndex.php">
     go back
 </a>
@@ -70,3 +71,4 @@ else{
     echo "Error!";
 }
 ?>
+</div>

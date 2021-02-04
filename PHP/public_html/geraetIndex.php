@@ -1,5 +1,4 @@
 <?php
-
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
@@ -25,7 +24,6 @@ if (isset($_GET['land'])) {
 if($firma != '') { $geraet_array = $database->selectGeraetFirma($firma); }         // search by firma
 else if($plz != '' && $strasse != '' && $land != '') { $geraet_array = $database->selectGeraetStudio($plz, $strasse, $land); }  // search by studio
 else { $geraet_array = $database->selectAllGeraet(); }        // show all
-
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +47,7 @@ else { $geraet_array = $database->selectAllGeraet(); }        // show all
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -111,140 +109,140 @@ $("#wrapper").toggleClass("toggled");
 });
 </script>
 
+<div class="container-fluid">
 
+    <!-- Add + Update + Delete - choice through radio -->
+    <br>
+    <h1>Gerät </h1>
+    <br>
 
-<!-- Add + Update + Delete - choice through radio -->
-<br>
-<h1>Gerät </h1>
-<br>
+    <form method="get" action="geraetAddUpdateDelete.php"> 
 
-<form method="get" action="geraetAddUpdateDelete.php"> 
+        <!-- Choice -->
+        <div class="form-group">
+            <label for="Aktion"><h3>Create, Update or Delete Training</h3></label>
+            <select class="form-control" id="Aktion" name="Aktion">
+                <option value="add" title="firma + seriennr PK, plz + strasse + land FK">Create</option>
+                <option value="update" title="new name and kosten">Update</option>
+                <option value="delete" title="firma + seriennr + plz + strasse + land needed">Delete</option>
+            </select>
+        </div>
 
-    <!-- Choice -->
-    <div class="form-group">
-        <label for="Aktion"><h3>Create, Update or Delete Training</h3></label>
-        <select class="form-control" id="Aktion" name="Aktion">
-            <option value="add">Create</option>
-            <option value="update">Update</option>
-            <option value="delete">Delete</option>
-        </select>
-    </div>
+        <!-- Textfelder -->
+        <div class="row">
 
-    <!-- Textfelder -->
-    <div class="row">
+            <div class="col">
 
-        <div class="col">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Firma" name="firma">
+                </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Firma" name="firma">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name" name="name">
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name" name="name">
+            <div class="col">
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="Seriennummer" name="seriennr">
+                </div>
+                
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="Kosten" name="kosten">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Postleitzahl" name="plz">
             </div>
 
-        </div>
-
-        <div class="col">
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Seriennummer" name="seriennr">
-            </div>
-            
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Kosten" name="kosten">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Straße" name="strasse">
             </div>
 
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Postleitzahl" name="plz">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Land" name="land">
+            </div>
         </div>
 
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Straße" name="strasse">
+        <!-- Submit button -->
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+    </form>
+    <br>
+
+    <br>
+    <!-- Search Geraet-->
+    <h3 title="search for Geraete from specific firma or studio (if both - search for firma)">Search Geräte </h3>
+    <form method="GET">
+        <b>By Firma</b>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Firma" name="firma" value='<? echo $firma; ?>'>
         </div>
 
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Land" name="land">
+        <b>By Studio</b>
+
+        <div class="form-group row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Studio Postleitzahl" name="plz" value='<? echo $plz; ?>'>
+            </div>
+            <br>
+
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Studio Straße" name="strasse" value='<? echo $strasse; ?>'>
+            </div>
+            <br>
+
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Studio Land" name="land" value='<? echo $land; ?>'>
+            </div>
         </div>
-    </div>
 
-    <!-- Submit button -->
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
-    </div>
-</form>
-<br>
-
-<br>
-<!-- Search Geraet-->
-<h3 title="search for Geraete from specific firma or studio (if both - search for firma)">Search Geräte </h3>
-<form method="GET">
-    <b>By Firma</b>
-
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Firma" name="firma" value='<? echo $firma; ?>'>
-    </div>
-
-    <b>By Studio</b>
-
-    <div class="form-group row">
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Studio Postleitzahl" name="plz" value='<? echo $plz; ?>'>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
         </div>
-        <br>
-
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Studio Straße" name="strasse" value='<? echo $strasse; ?>'>
-        </div>
-        <br>
-
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Studio Land" name="land" value='<? echo $land; ?>'>
-        </div>
-    </div>
-
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Search
-        </button>
-    </div>
-</form>
+    </form>
 
 
-<!-- Search Result -->
-<br>
-<h3>Search Results</h3>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>Firma</th>
-        <th>Seriennummer</th>
-        <th>Name</th>     
-        <th>Kosten</th>  
-        <th>Studio PLZ</th>    
-        <th>Studio Straße</th>    
-        <th>Studio Land</th>    
-    </tr>
-    </thead>
-
-    <?php foreach ($geraet_array as $geraet) : ?>
+    <!-- Search Result -->
+    <br>
+    <h3>Search Results</h3>
+    <table class="table table-striped table-sm table-hover">
+        <thead class="thead-dark">
         <tr>
-            <td><?php echo $geraet['FIRMA']; ?>  </td>
-            <td><?php echo $geraet['SERIENNR']; ?>  </td>
-            <td><?php echo $geraet['G_NAME']; ?>  </td>   
-            <td><?php echo $geraet['G_KOSTEN']; ?>  </td>     
-            <td><?php echo $geraet['PLZ']; ?>  </td>  
-            <td><?php echo $geraet['STRASSE']; ?>  </td>  
-            <td><?php echo $geraet['LAND']; ?>  </td>  
+            <th>Firma</th>
+            <th>Seriennummer</th>
+            <th>Name</th>     
+            <th>Kosten</th>  
+            <th>Studio PLZ</th>    
+            <th>Studio Straße</th>    
+            <th>Studio Land</th>    
         </tr>
-    <?php endforeach; ?>
-</table>
+        </thead>
 
+        <?php foreach ($geraet_array as $geraet) : ?>
+            <tr>
+                <td><?php echo $geraet['FIRMA']; ?>  </td>
+                <td><?php echo $geraet['SERIENNR']; ?>  </td>
+                <td><?php echo $geraet['G_NAME']; ?>  </td>   
+                <td><?php echo $geraet['G_KOSTEN']; ?>  </td>     
+                <td><?php echo $geraet['PLZ']; ?>  </td>  
+                <td><?php echo $geraet['STRASSE']; ?>  </td>  
+                <td><?php echo $geraet['LAND']; ?>  </td>  
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
 
    </main>
 </body>

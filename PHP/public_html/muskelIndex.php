@@ -1,5 +1,4 @@
 <?php
-
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
@@ -15,7 +14,7 @@ if (isset($_GET['mv'])) {
     $mv = $_GET['mv'];
 }
 
-// gt or lt
+// greater or less than "gt/lt"
 $action = '';
 if (isset($_GET['Aktion'])) {
     $action = $_GET['Aktion'];
@@ -23,7 +22,6 @@ if (isset($_GET['Aktion'])) {
 
 
 // fetch data from database
-
 if($bezeichnung != '') { $muskel_array = $database->selectMuskel($bezeichnung); }                  // search by bezeichnung
 else if($bezeichnung == '' && $mv != '') { $muskel_array = $database->selectMuskelMv($mv, $action); }  // search by mv with > or <
 else { $muskel_array = $database->selectMuskel($bezeichnung); }        // show all
@@ -51,7 +49,7 @@ else { $muskel_array = $database->selectMuskel($bezeichnung); }        // show a
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -114,106 +112,105 @@ $("#wrapper").toggleClass("toggled");
 </script>
 
 
+  <div class="container-fluid">
+  <!-- Add + Update + Delete Muskel -->
+  <br>
+  <h1>Muskel</h1>
+  <br>
 
-<!-- Add + Update + Delete Muskel -->
-<br>
-<h1>Muskel</h1>
-<br>
+  <form method="get" action="muskelAddUpdateDelete.php"> 
 
-<form method="get" action="muskelAddUpdateDelete.php"> 
+      <!-- Choice -->
+      <div class="form-group">
+        <label for="Aktion"><h3>Create, Update or Delete Muskel</h3></label>
+        <select class="form-control" id="Aktion" name="Aktion">
+          <option value="add" title="Bezeichnung + MV benötigt - ID autogeneriert">Create</option>
+          <option value="update" title="Bezeichnung + MV für bestehende ID geändert">Update</option>
+          <option value="delete" title="Muskel mit MID wird gelöscht">Delete</option>
+        </select>
+      </div>
 
-    <!-- Choice -->
-    <div class="form-group">
-      <label for="Aktion"><h3>Create, Update or Delete Muskel</h3></label>
-      <select class="form-control" id="Aktion" name="Aktion">
-        <option value="add" title="Bezeichnung + MV benötigt - ID autogeneriert">Create</option>
-        <option value="update" title="Bezeichnung + MV für bestehende ID geändert">Update</option>
-        <option value="delete" title="Muskel mit MID wird gelöscht">Delete</option>
-      </select>
-    </div>
+      <!-- Textfelder -->
+      <div class="form-group row">
+          <div class="col">
+              <input type="number" class="form-control" placeholder="Muskel ID" name="mid">
+          </div>
+          <br>
 
-    <!-- Textfelder -->
-    <div class="form-group row">
-        <div class="col">
-            <input type="number" class="form-control" placeholder="Muskel ID" name="mid">
-        </div>
-        <br>
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Bezeichnung" name="bezeichnung">
+          </div>
+          <br>
 
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Bezeichnung" name="bezeichnung">
-        </div>
-        <br>
-
-        <div class="col">
-            <input type="number" class="form-control" placeholder="Minimalvolumen" name="mv">
-        </div>
-    </div>
-
-
-    <!-- Submit button -->
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
-    </div>
-</form>
-<br>
+          <div class="col">
+              <input type="number" class="form-control" placeholder="Minimalvolumen" name="mv">
+          </div>
+      </div>
 
 
-
-<br>
-<!-- Search Muskel -->
-<h3 title="Search for Bezeichnung OR MV (if both: Bezeichnung gets searched)">Search Muskel </h3>
-<form method="GET">
-
-    <div>
-        <input type="text" class="form-control" placeholder="Bezeichnung" name="bezeichnung" value='<? echo $bezeichnung; ?>'>
-    </div>
-    <br>
-
-    <div class="input-group">
-            <select class="form-control-6" name="Aktion">
-                <option value="gt">Greater or Equal</option>
-                <option value="lt">Less or Equal</option>
-            </select>
-          
-        <input type="number" class="form-control input-lg" placeholder="Minimalvolumen" name="mv" value='<? echo $mv; ?>'>
-    </div>
+      <!-- Submit button -->
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Submit
+          </button>
+      </div>
+  </form>
+  <br>
 
 
 
-    <br>
+  <br>
+  <!-- Search Muskel -->
+  <h3 title="Search for Bezeichnung OR MV (if both: Bezeichnung gets searched)">Search Muskel </h3>
+  <form method="GET">
 
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Search
-        </button>
-    </div>
-</form>
+      <div>
+          <input type="text" class="form-control" placeholder="Bezeichnung" name="bezeichnung" value='<? echo $bezeichnung; ?>'>
+      </div>
+      <br>
 
-
-<br>
-<!-- Search result -->
-<h3>Search Results</h3>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>Muskel ID</th>
-        <th>Bezeichnung</th>
-        <th>Minimalvolumen</th>       
-    </tr>
-    </thead>
-
-    <?php foreach ($muskel_array as $muskel) : ?>
-        <tr>
-            <td><?php echo $muskel['M_ID']; ?>  </td>
-            <td><?php echo $muskel['BEZEICHNUNG']; ?>  </td>
-            <td><?php echo $muskel['MV']; ?>  </td>      
-        </tr>
-    <?php endforeach; ?>
-</table>
+      <div class="input-group">
+              <select class="form-control-6" name="Aktion">
+                  <option value="gt">Greater or Equal</option>
+                  <option value="lt">Less or Equal</option>
+              </select>
+            
+          <input type="number" class="form-control input-lg" placeholder="Minimalvolumen" name="mv" value='<? echo $mv; ?>'>
+      </div>
 
 
-   </main>
+
+      <br>
+
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Search
+          </button>
+      </div>
+  </form>
+
+
+  <br>
+  <!-- Search result -->
+  <h3>Search Results</h3>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>Muskel ID</th>
+          <th>Bezeichnung</th>
+          <th>Minimalvolumen</th>       
+      </tr>
+      </thead>
+
+      <?php foreach ($muskel_array as $muskel) : ?>
+          <tr>
+              <td><?php echo $muskel['M_ID']; ?>  </td>
+              <td><?php echo $muskel['BEZEICHNUNG']; ?>  </td>
+              <td><?php echo $muskel['MV']; ?>  </td>      
+          </tr>
+      <?php endforeach; ?>
+  </table>
+</div>
+</main>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
@@ -34,7 +33,7 @@ else { $training_array = $database->selectTrainingLand($land); }        // not e
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -97,113 +96,115 @@ $("#wrapper").toggleClass("toggled");
 </script>
 
 
-
-<!-- Add + Update + Delete - choice through radio -->
-<br>
-<h1>Training </h1>
-<br>
-
-<form method="get" action="trainingAddUpdateDelete.php"> 
-
-    <!-- Choice -->
-    <div class="form-group">
-      <label for="Aktion"><h3>Create, Update or Delete Training</h3></label>
-      <select class="form-control" id="Aktion" name="Aktion">
-        <option value="add">Create</option>
-        <option value="update">Update</option>
-        <option value="delete">Delete</option>
-      </select>
-    </div>
-
-    <!-- Textfelder -->
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Trainee SVNr" name="svnr">
-            </div>
-
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Studio PLZ" name="plz">
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Studio Land" name="land">
-            </div>
-
-        </div>
-
-        <div class="col">
-        <div class="form-group">
-                <input type="number" class="form-control" placeholder="Trainer ID" name="tid">
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Studio Straße" name="strasse">
-            </div>
-
-            <div class="form-group">
-                <input type="number" class="form-control" placeholder="Sessions pro Woche" name="sessions">
-            </div>
-
-        </div>
-    </div>
+<div class="container-fluid">
 
 
-    <!-- Submit button -->
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
-    </div>
-</form>
-<br>
+  <!-- Add + Update + Delete - choice through radio -->
+  <br>
+  <h1>Training </h1>
+  <br>
 
-<br>
-<!-- Search Training -->
-<h3 title="search for Training Relations in specific country">Search Training</h3>
-<form method="GET">
+  <form method="get" action="trainingAddUpdateDelete.php"> 
 
-    <div>
-        <input type="text" class="form-control" placeholder="Land" name="land" value='<? echo $land; ?>'>
-    </div>
-    <br>
+      <!-- Choice -->
+      <div class="form-group">
+        <label for="Aktion"><h3>Create, Update or Delete Training</h3></label>
+        <select class="form-control" id="Aktion" name="Aktion">
+          <option value="add" title="Trainee, Studio, (Trainer) must already exist">Create</option>
+          <option value="update" title="update attribute sessions">Update</option>
+          <option value="delete" title="no sessions attribute needed">Delete</option>
+        </select>
+      </div>
 
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Search
-        </button>
-    </div>
-</form>
+      <!-- Textfelder -->
+      <div class="row">
+          <div class="col">
+              <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Trainee SVNr" name="svnr">
+              </div>
 
+              <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Studio PLZ" name="plz">
+              </div>
 
-<!-- Search Result -->
-<br>
-<h3>Search Results</h3>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>Trainee SVNr</th>
-        <th>Studio PLZ</th>
-        <th>Studio Strasse</th>     
-        <th>Studio Land</th>  
-        <th>Trainer ID</th>    
-        <th>Sessions pro Woche</th>    
-    </tr>
-    </thead>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Studio Land" name="land">
+              </div>
 
-    <?php foreach ($training_array as $training) : ?>
-        <tr>
-            <td><?php echo $training['SVNR']; ?>  </td>
-            <td><?php echo $training['PLZ']; ?>  </td>
-            <td><?php echo $training['STRASSE']; ?>  </td>   
-            <td><?php echo $training['LAND']; ?>  </td>     
-            <td><?php echo $training['T_ID']; ?>  </td>  
-            <td><?php echo $training['SESSIONS_WOCHE']; ?>  </td>  
-        </tr>
-    <?php endforeach; ?>
-</table>
+          </div>
+
+          <div class="col">
+          <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Trainer ID" name="tid">
+              </div>
+
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Studio Straße" name="strasse">
+              </div>
+
+              <div class="form-group">
+                  <input type="number" class="form-control" placeholder="Sessions pro Woche" name="sessions">
+              </div>
+
+          </div>
+      </div>
 
 
-   </main>
+      <!-- Submit button -->
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Submit
+          </button>
+      </div>
+  </form>
+  <br>
+
+  <br>
+  <!-- Search Training -->
+  <h3 title="search for Training Relations in specific country">Search Training</h3>
+  <form method="GET">
+
+      <div>
+          <input type="text" class="form-control" placeholder="Land" name="land" value='<? echo $land; ?>'>
+      </div>
+      <br>
+
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Search
+          </button>
+      </div>
+  </form>
+
+
+  <!-- Search Result -->
+  <br>
+  <h3>Search Results</h3>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>Trainee SVNr</th>
+          <th>Studio PLZ</th>
+          <th>Studio Straße</th>     
+          <th>Studio Land</th>  
+          <th>Trainer ID</th>    
+          <th>Sessions pro Woche</th>    
+      </tr>
+      </thead>
+
+      <?php foreach ($training_array as $training) : ?>
+          <tr>
+              <td><?php echo $training['SVNR']; ?>  </td>
+              <td><?php echo $training['PLZ']; ?>  </td>
+              <td><?php echo $training['STRASSE']; ?>  </td>   
+              <td><?php echo $training['LAND']; ?>  </td>     
+              <td><?php echo $training['T_ID']; ?>  </td>  
+              <td><?php echo $training['SESSIONS_WOCHE']; ?>  </td>  
+          </tr>
+      <?php endforeach; ?>
+  </table>
+
+</div>
+</main>
 </body>
 </html>

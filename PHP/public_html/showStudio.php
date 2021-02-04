@@ -1,9 +1,9 @@
 <?php
-
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
-$studio_array = $database->selectAllStudio();
+// fetch all studios
+$studio_array = $database->selectAllStudio(); 
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $studio_array = $database->selectAllStudio();
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -89,52 +89,49 @@ $("#wrapper").toggleClass("toggled");
 });
 </script>
 
-
-
-
 <body>
 <main>
 <br>
+<div class="container-fluid">
+  <button onclick="goBack()" class="btn btn-outline-secondary btn-lg">
+      Back
+  </button>
+  <script>
+      function goBack(){
+          window.history.back();
+      }
+  </script>
 
-<button onclick="goBack()" class="btn btn-outline-secondary btn-lg">
-    Back
-</button>
-<script>
-    function goBack(){
-        window.history.back();
-    }
-</script>
+  <br>  
+  <br>
 
-<br>  
-<br>
+  <!-- Display all Studios-->
+  <h1>Show Studio</h1>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>Studio Name</th>
+          <th>PLZ</th>
+          <th>Strasse</th>     
+          <th>Land</th>  
+          <th>Kosten</th>    
+          <th>Flaeche</th>    
+      </tr>
+      </thead>
 
-<!-- Display all Studios-->
-<h1>Show Studio</h1>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>Studio Name</th>
-        <th>PLZ</th>
-        <th>Strasse</th>     
-        <th>Land</th>  
-        <th>Kosten</th>    
-        <th>Flaeche</th>    
-    </tr>
-    </thead>
+      <?php foreach ($studio_array as $studio) : ?>
+          <tr>
+              <td><?php echo $studio['ST_NAME']; ?>  </td>
+              <td><?php echo $studio['PLZ']; ?>  </td>
+              <td><?php echo $studio['STRASSE']; ?>  </td>   
+              <td><?php echo $studio['LAND']; ?>  </td>     
+              <td><?php echo $studio['ST_KOSTEN']; ?>  </td>  
+              <td><?php echo $studio['FLAECHE']; ?>  </td>  
+          </tr>
+      <?php endforeach; ?>
+  </table>
+</div>
 
-    <?php foreach ($studio_array as $studio) : ?>
-        <tr>
-            <td><?php echo $studio['ST_NAME']; ?>  </td>
-            <td><?php echo $studio['PLZ']; ?>  </td>
-            <td><?php echo $studio['STRASSE']; ?>  </td>   
-            <td><?php echo $studio['LAND']; ?>  </td>     
-            <td><?php echo $studio['ST_KOSTEN']; ?>  </td>  
-            <td><?php echo $studio['FLAECHE']; ?>  </td>  
-        </tr>
-    <?php endforeach; ?>
-</table>
-
-
-   </main>
+</main>
 </body>
 </html>

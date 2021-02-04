@@ -2,7 +2,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
-
+<div class="container-fluid">
 <a href="tpIndex.php">
     go back
 </a>
@@ -34,9 +34,10 @@ else if($action == "delete") { $success = $database->deleteTP($svnr1, $svnr2); }
 
 // Check result
 if ($success){
-    echo "Traingspartner successfully added!";
+    echo "Operation successful!";
 }
 else{
-    echo "Error can't insert Trainingspartner!";
+    echo "Error!";
 }
 ?>
+</div>

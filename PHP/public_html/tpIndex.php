@@ -1,5 +1,4 @@
 <?php
-
 require_once('DatabaseHelper.php');
 $database = new DatabaseHelper();
 
@@ -13,7 +12,6 @@ if (isset($_GET['svnr'])) {
 }
 
 $tp_array = $database->selectTP($svnr);
-
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +35,7 @@ $tp_array = $database->selectTP($svnr);
 
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading">Fitness Datenbank </div>
+    <div class="sidebar-heading">CRUD Operations</div>
     <div class="list-group list-group-flush">
         <a href="trainingIndex.php" class="list-group-item list-group-item-action bg-light">Training</a>
         <a href="tpIndex.php" class="list-group-item list-group-item-action bg-light">Trainingspartner</a>
@@ -100,114 +98,114 @@ $("#wrapper").toggleClass("toggled");
 </script>
 
 
+  <div class="container-fluid">
+  <!-- Add + Delete TP -->
+  <br>
+  <h1>Trainingspartner</h1>
+  <br>
 
-<!-- Add + Delete TP -->
-<br>
-<h1>Trainingspartner</h1>
-<br>
+  <form method="get" action="tpAddDelete.php"> 
 
-<form method="get" action="tpAddDelete.php"> 
-
-    <!-- Choice -->
-    <div class="form-group">
-      <label for="Aktion"><h3>Create or Delete Trainingspartner</h3></label>
-      <select class="form-control" id="Aktion" name="Aktion">
-        <option value="add">Create</option>
-        <option value="delete">Delete</option>
-      </select>
-    </div>
-
-
-
-    <!-- Textfelder -->
-    <div class="form-group row">
-        <div class="col">
-            <input type="number" class="form-control" placeholder="Trainee 1 SVNr" name="svnr1">
-        </div>
-
-        <div class="col">
-            <input type="number" class="form-control" placeholder="Trainee 2 SVNr" name="svnr2">
-        </div>
-    </div>
-
-    <!-- Submit button -->
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
-    </div>
-</form>
-<br>
+      <!-- Choice -->
+      <div class="form-group">
+        <label for="Aktion"><h3>Create or Delete Trainingspartner</h3></label>
+        <select class="form-control" id="Aktion" name="Aktion">
+          <option value="add">Create</option>
+          <option value="delete">Delete</option>
+        </select>
+      </div>
 
 
-<br>
-<!-- Search TP -->
-<h3 title="every relation a Trainee belongs to">Search Trainingspartner </h3>
-<form method="GET">
 
-    <div>
-        <input type="number" class="form-control" placeholder="Sozialversicherungsnummer" name="svnr" value='<? echo $svnr; ?>'>
-    </div>
-    <br>
+      <!-- Textfelder -->
+      <div class="form-group row">
+          <div class="col">
+              <input type="number" class="form-control" placeholder="Trainee 1 SVNr" name="svnr1">
+          </div>
 
-    <div>
-        <button type="submit" class="btn btn-primary">
-            Search
-        </button>
-    </div>
-</form>
+          <div class="col">
+              <input type="number" class="form-control" placeholder="Trainee 2 SVNr" name="svnr2">
+          </div>
+      </div>
+
+      <!-- Submit button -->
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Submit
+          </button>
+      </div>
+  </form>
+  <br>
 
 
-<!-- Display Trainingspartner-->
-<br>
-<h3>Search Results</h3>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>SVNr1</th>
-        <th>SVNr2</th>     
-    </tr>
-    </thead>
+  <br>
+  <!-- Search TP -->
+  <h3 title="every relation a Trainee belongs to">Search Trainingspartner </h3>
+  <form method="GET">
 
-    <?php foreach ($tp_array as $tp) : ?>
-        <tr>
-            <td><?php echo $tp['SVNR1']; ?>  </td>
-            <td><?php echo $tp['SVNR2']; ?>  </td>   
-        </tr>
-    <?php endforeach; ?>
-</table>
+      <div>
+          <input type="number" class="form-control" placeholder="Sozialversicherungsnummer" name="svnr" value='<? echo $svnr; ?>'>
+      </div>
+      <br>
 
-<!-- Display all Trainees-->
-<br>
-<br>
-<br>
-<h2>Trainees</h2>
-<table class="table table-striped table-sm table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th>SVNr</th>
-        <th>Name</th>
-        <th>Geschlecht</th>     
-        <th>Groesse</th>  
-        <th>Gewicht</th>    
-        <th>Zielgewicht</th>    
-        <th>Erfahrung</th>  
-    </tr>
-    </thead>
+      <div>
+          <button type="submit" class="btn btn-primary">
+              Search
+          </button>
+      </div>
+  </form>
 
-    <?php foreach ($trainee_array as $trainee) : ?>
-        <tr>
-            <td><?php echo $trainee['SVNR']; ?>  </td>
-            <td><?php echo $trainee['SP_NAME']; ?>  </td>
-            <td><?php echo $trainee['GESCHLECHT']; ?>  </td>   
-            <td><?php echo $trainee['GROESSE']; ?>  </td>     
-            <td><?php echo $trainee['GEWICHT']; ?>  </td>  
-            <td><?php echo $trainee['ZIELGEWICHT']; ?>  </td>  
-            <td><?php echo $trainee['ERFAHRUNG']; ?>  </td>  
-        </tr>
-    <?php endforeach; ?>
-</table>
 
+  <!-- Display Trainingspartner-->
+  <br>
+  <h3>Search Results</h3>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>SVNr1</th>
+          <th>SVNr2</th>     
+      </tr>
+      </thead>
+
+      <?php foreach ($tp_array as $tp) : ?>
+          <tr>
+              <td><?php echo $tp['SVNR1']; ?>  </td>
+              <td><?php echo $tp['SVNR2']; ?>  </td>   
+          </tr>
+      <?php endforeach; ?>
+  </table>
+
+  <!-- Display all Trainees-->
+  <br>
+  <br>
+  <br>
+  <h2>Trainees</h2>
+  <table class="table table-striped table-sm table-hover">
+      <thead class="thead-dark">
+      <tr>
+          <th>SVNr</th>
+          <th>Name</th>
+          <th>Geschlecht</th>     
+          <th>Groesse</th>  
+          <th>Gewicht</th>    
+          <th>Zielgewicht</th>    
+          <th>Erfahrung</th>  
+      </tr>
+      </thead>
+
+      <?php foreach ($trainee_array as $trainee) : ?>
+          <tr>
+              <td><?php echo $trainee['SVNR']; ?>  </td>
+              <td><?php echo $trainee['SP_NAME']; ?>  </td>
+              <td><?php echo $trainee['GESCHLECHT']; ?>  </td>   
+              <td><?php echo $trainee['GROESSE']; ?>  </td>     
+              <td><?php echo $trainee['GEWICHT']; ?>  </td>  
+              <td><?php echo $trainee['ZIELGEWICHT']; ?>  </td>  
+              <td><?php echo $trainee['ERFAHRUNG']; ?>  </td>  
+          </tr>
+      <?php endforeach; ?>
+  </table>
+</div>
 
 
    </main>
