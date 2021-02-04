@@ -2,8 +2,8 @@
 
 class DatabaseHelper {
 
-    const username = 'a11911424';   // use a + your matriculation number
-    const password = 'dbs20';       // use your oracle db password
+    const username = '***';   // use a + your matriculation number
+    const password = '***';       // use your oracle db password
     const con_string = 'oracle-lab.cs.univie.ac.at:1521/lab';
 
     protected $conn;
