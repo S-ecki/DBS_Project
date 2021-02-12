@@ -31,7 +31,7 @@ In this step, I wrote Scripts to create, fill up and delete the tables defined p
 
 `create.sql` includes the _create tables_ statements with Primary/Foreign Key definitions and a handful of other constraints. To produce unique PK, I used either _generated as identity_ or a _sequence_ combined with a _trigger_. The script also uses a _procedure_ and multiple _views_. <br>
 `drop.sql` deletes all previously created entities on the database, _cascading constraints_ to avoid dependencies. <br>
-`someInserts.sql` was used to test out the tables with some sensible data. The actual (high volume of) data is going to be inserted during the next step.
+`someInserts.sql` was used to test out the tables with some sensible data. The actual volume data is going to be inserted during the next step.
 
 
 ## Java + JDBC
