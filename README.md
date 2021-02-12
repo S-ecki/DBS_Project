@@ -27,7 +27,7 @@ Specifically, it defines Primary Keys, Foreign Keys and sometimes key candidates
 
 ## SQL Script on Oracle
 
-In this step, I wrote Scripts to create, fill up and delete the tables defined in the previous in the Relational Schema. I used [Oracle SQL Developer](https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html) to execute them on the server our University provided us with.
+In this step, I wrote Scripts to create, fill up and delete the tables defined previously. I used [Oracle SQL Developer](https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html) to execute them on the server our University provided us with.
 
 `create.sql` includes the _create tables_ statements with Primary/Foreign Key definitions and a handful of other constraints. To produce unique PK, I used either _generated as identity_ or a _sequence_ combined with a _trigger_. The script also uses a _procedure_ and multiple _views_. <br>
 `drop.sql` deletes all previously created entities on the database, _cascading constraints_ to avoid dependencies. <br>
