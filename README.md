@@ -27,6 +27,12 @@ Specifically, it defines Primary Keys, Foreign Keys and sometimes key candidates
 
 ## SQL Script on Oracle
 
+In this step, I wrote Scripts to create, fill up and delete the tables defined in the previous in the Relational Schema. I used [Oracle SQL Developer](https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html) to execute them on the server our University provided us with.
+
+`create.sql` includes the _create tables_ statements with Primary/Foreign Key definitions and a handful of other constraints. To produce unique PK, I used either _generated as identity_ or a _sequence_ combined with a _trigger_. The script also uses a _procedure_ and multiple _views_. <br>
+`drop.sql` deletes all previously created entities on the database, _cascading constraints_ to avoid dependencies. <br>
+`someInserts.sql` was used to test out the tables with some sensible data. The actual (high volume of) data is going to be inserted during the next step.
+
 
 ## Java + JDBC
 
@@ -55,9 +61,9 @@ _Note: The amount of tupels inserted is static in this program. However, it woul
 * The value of ER-Diagrams
 * How to translate ER to Relational Schema and DDL
 * SQL Syntax & Semantic
+* Executing SQL on Oracle + debugging
 * Database connection using Core Java
 * Working with _java.sql_
-* (Using _.csv_ files in Java)
 * Error Handling on databases
 * .html
 * .php - databases
