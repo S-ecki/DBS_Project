@@ -79,11 +79,18 @@ All in all, this was a very pleasureable experience for a first-time web develop
 * PHP with OCI8 to connect a website to a database
 * Working with Docker and its quirks
 * Applying a modern design using Bootstrap
+<br>
 
+## Some Screenshots
 
+`index.php`
 
 <img src="https://user-images.githubusercontent.com/75510543/107786384-2163d700-6d4e-11eb-989e-809ee4f91656.png">
 
+`muskelIndex.php`
+
 <img src="https://user-images.githubusercontent.com/75510543/107786395-245ec780-6d4e-11eb-8ae4-1d1b3fcb514b.png">
 
-<img src="https://user-images.githubusercontent.com/75510543/107786643-6e47ad80-6d4e-11eb-9340-28fedaa8ff41.png">
+`showTrainee.php`
+
+<img src="https://user-images.githubusercontent.com/75510543/107786963-c7afdc80-6d4e-11eb-857a-12455cd3bf33.png">
