@@ -54,7 +54,18 @@ _Note: Further comments to understand the code are provided inside the file._
 _Note: The amount of tupels inserted is static in this program. However, it would be an easy extension to have a command line interface to pass parameters for the inserted amount on each table. Further randomization of the Primary Key attributes would be required, but that shouldn´t be a problem. My time is just very limited right now :(_
 
 
-## PHP + Bootstrap
+## Website with PHP + Bootstrap
+
+This was, for sure, the most tricky part for me. We had to design a website that enables an user to execute [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations on the database. To achieve this, I used HTML/CSS (Bootstrap) and PHP - _all 3 languages I have never used before_. To deploy it, a [Docker](https://www.docker.com/) Container was used. 
+
+Starting off with the logic, I used [OCI8](https://www.php.net/manual/de/book.oci8.php) for PHP in my `DatabaseHelper.php` to implement all the needed methods on my database for the CRUD operations. <br>
+An `index.php` files was created as the HomePage, housing general information, a _Sidebar_ & _Dropdown_ to navigate the site and a Diashow with related pictures. (see screenshot below) <br>
+Every table that allows CRUD operation has an own page (`*index.php`) displaying them and the content of the table itself. (see exemplary screenshot below) <br>
+For the rest of the tables, simple `show*.php` files were created to show off the content.
+
+Styling of all the pages was done swiftly using [this](https://startbootstrap.com/template/simple-sidebar) free Bootstrap template. The simplicity of using Bootstrap is what surprised me the most during all of this project. The style was applied quickly with minimal knowledge of CSS and customization was a easy as it gets with the clear [docs](https://getbootstrap.com/docs/4.1/getting-started/introduction/) and some tutorial videos.
+
+All in all, this was a very pleasureable experience for a first-time web development and I can´t remember ever learning this much in such a short amount of time!
 
 
 ## What I´ve learnt
@@ -65,8 +76,9 @@ _Note: The amount of tupels inserted is static in this program. However, it woul
 * Database connection using Core Java
 * Working with _java.sql_
 * Error Handling on databases
-* .html
-* .php - databases
-* .connecting website to database
+* Using HTML + CSS to create a basic website
+* PHP with OCI8 to connect a website to a database
 * Working with Docker and its quirks
-* .bootstrap
+* Applying a modern design using Bootstrap
+
+`_screenshots?_`
