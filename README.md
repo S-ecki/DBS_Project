@@ -85,7 +85,7 @@ All in all, this was a very pleasureable experience for a first-time web develop
 
 `index.php`
 
-<img src="https://user-images.githubusercontent.com/75510543/107786384-2163d700-6d4e-11eb-989e-809ee4f91656.png">
+<img src="https://user-images.githubusercontent.com/75510543/107787821-e662a300-6d4f-11eb-9853-ee4cc9fcc6ae.png">
 
 `muskelIndex.php`
 
