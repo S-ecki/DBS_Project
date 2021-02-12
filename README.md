@@ -49,7 +49,7 @@ _Note: for ease of use, all parameters are read and stay as Strings until they a
 `Launcher` contains <sup>(you guessed it)</sup> the _main_ method. It fills all the tables with the data provided and additionally keeps track of all the foreign keys needed to dynamically create relationships between the entities.</br>
 _Note: Further comments to understand the code are provided inside the file._
 
-_Note: The amount of tupels inserted is static in this program. However, it would be an easy extension to have a command line interface to pass parameters for the inserted amount on each table. Further randomization of the Primary Key attributes would be required, but that shouldn´t be a problem. My time is just very limited right now :(_
+_Note: The amount of tupels inserted is static in this program. However, it would be an easy extension to have a command line interface to pass parameters for the inserted amount on each table. Further randomization of the Primary Key attributes would be required, but that shouldn´t be a problem._
 
 
 ## Website with PHP + Bootstrap
@@ -85,7 +85,7 @@ All in all, this was a very pleasureable experience for a first-time web develop
 
 `index.php`
 
-<img src="https://user-images.githubusercontent.com/75510543/107787821-e662a300-6d4f-11eb-9853-ee4cc9fcc6ae.png">
+<img src="https://user-images.githubusercontent.com/75510543/107787986-232e9a00-6d50-11eb-9729-a91913409b21.png">
 
 `muskelIndex.php`
 
