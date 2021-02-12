@@ -56,7 +56,7 @@ _Note: The amount of tupels inserted is static in this program. However, it woul
 
 ## Website with PHP + Bootstrap
 
-This was, for sure, the most tricky part for me. We had to design a website that enables an user to execute [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations on the database. To achieve this, I used HTML/CSS (Bootstrap) and PHP - _all 3 languages I have never used before_. To deploy it, a [Docker](https://www.docker.com/) Container was used. 
+This was, for sure, the most tricky part for me. We had to design a website that enables an user to execute [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations on the database. To achieve this, I used HTML/CSS (Bootstrap) and PHP - _all 3 languages I have never used before_. To deploy it, a [Docker](https://www.docker.com/) Container was utilized. 
 
 Starting off with the logic, I used [OCI8](https://www.php.net/manual/de/book.oci8.php) for PHP in my `DatabaseHelper.php` to implement all the needed methods on my database for the CRUD operations. <br>
 An `index.php` files was created as the HomePage, housing general information, a _Sidebar_ & _Dropdown_ to navigate the site and a Diashow with related pictures. (see screenshot below) <br>
